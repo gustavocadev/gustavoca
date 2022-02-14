@@ -10,8 +10,8 @@ import {
 import type { MetaFunction } from "remix";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { ThemeContextProvider } from "./context/ThemeContext";
-import { useContext, useEffect } from "react";
+// import { ThemeContextProvider } from "./context/ThemeContext";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "~/context/ThemeContext";
 
 import styles from "./tailwind.css";
@@ -25,12 +25,20 @@ export const links: LinksFunction = () => {
 };
 
 export default function App() {
-    const { theme, setTheme } = useContext(ThemeContext);
+    const [theme, setTheme] = useState("");
 
-    // useEffect(() => {}, []);
+    useEffect(() => {
+        const actualTheme = localStorage.getItem("theme") ?? "light";
+
+        setTheme(actualTheme);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+    }, [theme]);
 
     return (
-        <html lang="en" className="light">
+        <html lang="en" className={theme}>
             <head>
                 <meta charSet="utf-8" />
                 <meta
@@ -41,13 +49,18 @@ export default function App() {
                 <Links />
             </head>
             <body className="bg-[#F9FAFB] text-black dark:bg-[#181818] dark:text-gray-200">
-                <ThemeContextProvider>
+                <ThemeContext.Provider
+                    value={{
+                        theme,
+                        setTheme,
+                    }}
+                >
                     <Header />
                     <main className="px-[22px] lg:px-[142px]">
                         <Outlet />
                     </main>
                     {/* <Footer /> */}
-                </ThemeContextProvider>
+                </ThemeContext.Provider>
                 <ScrollRestoration />
                 <Scripts />
                 {process.env.NODE_ENV === "development" && <LiveReload />}

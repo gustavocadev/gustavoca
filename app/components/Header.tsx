@@ -8,16 +8,6 @@ const Header = () => {
     const handleToggle = () => {
         // toggle
         setTheme(theme === "light" ? "dark" : "light");
-        // condition
-        if (theme === "light") {
-            document.documentElement.classList.remove("light");
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-            return;
-        }
-        document.documentElement.classList.remove("dark");
-        document.documentElement.classList.add("light");
-        localStorage.setItem("theme", "light");
     };
 
     return (

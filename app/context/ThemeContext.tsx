@@ -1,15 +1,4 @@
-import { useEffect } from "react";
-import {
-    createContext,
-    Dispatch,
-    ReactNode,
-    SetStateAction,
-    useState,
-} from "react";
-
-type ThemeContextProviderType = {
-    children: ReactNode;
-};
+import { createContext, Dispatch, SetStateAction } from "react";
 
 type ThemeContextType = {
     theme: string;
@@ -21,38 +10,4 @@ const ThemeContext = createContext<ThemeContextType>({
     setTheme: () => {},
 });
 
-const ThemeContextProvider = ({ children }: ThemeContextProviderType) => {
-    const [theme, setTheme] = useState("");
-
-    useEffect(() => {
-        const actualTheme = localStorage.getItem("theme") ?? "light";
-
-        if (actualTheme === "dark") {
-            document.documentElement.classList.remove("light");
-            document.documentElement.classList.add("dark");
-            return;
-        } else {
-            document.documentElement.classList.remove("dark");
-            document.documentElement.classList.add("light");
-        }
-
-        setTheme(actualTheme);
-    }, []);
-
-    // useEffect(() => {
-    //     localStorage.setItem("theme", theme);
-    // }, [theme]);
-
-    return (
-        <ThemeContext.Provider
-            value={{
-                setTheme,
-                theme,
-            }}
-        >
-            {children}
-        </ThemeContext.Provider>
-    );
-};
-
-export { ThemeContext, ThemeContextProvider };
+export { ThemeContext };
