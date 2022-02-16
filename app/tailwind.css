@@ -580,11 +580,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 50px;
 }
 
-.px-\[32px\] {
-  padding-left: 32px;
-  padding-right: 32px;
-}
-
 .pb-8 {
   padding-bottom: 2rem;
 }
@@ -662,21 +657,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }
 
-  .sm\:py-\[24px\] {
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-
   .sm\:px-\[54px\] {
     padding-left: 54px;
     padding-right: 54px;
   }
-}
 
-@media (min-width: 768px) {
-  .md\:px-\[104px\] {
-    padding-left: 104px;
-    padding-right: 104px;
+  .sm\:py-\[24px\] {
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 }
 
@@ -708,16 +696,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:px-\[142px\] {
     padding-left: 142px;
     padding-right: 142px;
-  }
-
-  .lg\:px-\[248px\] {
-    padding-left: 248px;
-    padding-right: 248px;
-  }
-
-  .lg\:px-\[104px\] {
-    padding-left: 104px;
-    padding-right: 104px;
   }
 
   .lg\:text-\[68px\] {
